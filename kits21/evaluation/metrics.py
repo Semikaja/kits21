@@ -79,11 +79,9 @@ def compute_metrics_for_case(fname_pred: str, fname_ref: str) -> np.ndarray:
     """
     Takes two .nii.gz segmentation maps and computes the KiTS metrics for all HECs. The return value of this function
     is an array of size num_HECs x num_metrics (currently 3x2).
-
     The order of metrics in the tuple follows the order on the KiTS website (https://kits21.kits-challenge.org/):
     -> Dice (1 is best)
     -> Surface Dice (1 is best)
-
     :param fname_pred: filename of the predicted segmentation
     :param fname_ref: filename of the ground truth segmentation
     :return: np.ndarray of shape 3x2 (labels x metrics). Labels are HECs in the order given by HEC_NAME_LIST
@@ -112,7 +110,6 @@ def compute_metrics_for_case(fname_pred: str, fname_ref: str) -> np.ndarray:
 def evaluate_predictions(folder_with_predictions: str, num_processes: int = 8, write_csv_file: bool = True,) \
         -> Tuple[np.ndarray, List[str]]:
     """
-
     :param folder_with_predictions: your predictions must be located in this folder. Predictions must be named
     case_XXXXX.nii.gz
     :param num_processes: number of CPU processes to use for metric computation. Watch out for RAM usage!
